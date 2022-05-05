@@ -1,4 +1,3 @@
-#include <LiquidCrystal_I2C.h>
 #include <SoftwareSerial.h>
 
 /* 관련 핀 상수화하기 */
@@ -28,4 +27,6 @@ void loop() {
   }
 
 }
+
+// MAC Address: 98:DA:60:01:9E:19
 

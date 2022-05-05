@@ -4,7 +4,6 @@
 /* 관련 핀 상수화하기 */
 #define TX 2
 #define RX 3
-#define LED 5
 
 SoftwareSerial blueToothSerial(TX, RX);   // 블루투스 객체 선언
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // LCD 객체 선언
@@ -30,7 +29,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);  // LCD 객체 선언
  */
 
 /*
- * -- 2019 칵테일 레시피 --
+ * -- 2022 칵테일 레시피 --
  * 
  * 1번 모터 사이다 
  * 2번 모터 망고주스
@@ -71,7 +70,6 @@ void setup() {
   blueToothSerial.begin(9600);
 
   /* 핀 모드 설정 */
-  pinMode(LED,OUTPUT);
   pinMode(7,OUTPUT);
   pinMode(8,OUTPUT);
   pinMode(9,OUTPUT);
@@ -81,10 +79,9 @@ void setup() {
   pinMode(13,OUTPUT);
 
   /* Lcd 판 기본설정 */
-  lcd.begin();
   lcd.backlight();
   lcd.setCursor(0,0);
-  lcd.print("OVERFLOW");
+  lcd.print("Cocktail");
   
   Serial.println("-- 아두이노 세팅 완료 --");
 }

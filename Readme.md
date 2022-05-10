@@ -39,12 +39,19 @@ https://eduino.kr/product/detail.html?product_no=984&cate_no=55&display_group=1
 
 ---
 
-실리콘 호스 
-https://www.coupang.com/vp/products/5094541042?itemId=6933160739&vendorItemId=74225693121&sourceType=srp_product_ads&clickEventId=74343212-78af-4906-958f-8781f407d265&korePlacement=15&koreSubPlacement=1&q=실리콘+튜브&itemsCount=36&searchId=e44fd067467b4c2cb0b9ed50402efb44&rank=0&isAddedCart=
+## 구상
 
----
+<details markdown="1">
 
-### 구상
+<summary>🐾 3D 구상도</summary>
 
-![12](https://user-images.githubusercontent.com/54762273/166262201-6e10c84d-0b72-48fc-9eb6-92e65a9c57aa.PNG)
+<img width="1040" alt="스크린샷 2022-05-10 오후 6 56 13" src="https://user-images.githubusercontent.com/54762273/167602747-8bd06f94-edce-4469-8551-89f78b832a2a.png">
+<img width="1161" alt="스크린샷 2022-05-10 오후 6 56 39" src="https://user-images.githubusercontent.com/54762273/167602765-471658d1-95d1-4517-9110-cec68221eecd.png">
+<img width="1032" alt="스크린샷 2022-05-10 오후 6 57 24" src="https://user-images.githubusercontent.com/54762273/167602769-45ccf083-6f7d-4e25-a935-a4ff899f0f3e.png">
+
+
+</details>
+
+
+
 

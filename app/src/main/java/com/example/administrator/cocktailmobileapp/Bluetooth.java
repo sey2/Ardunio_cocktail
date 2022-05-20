@@ -71,7 +71,7 @@ public class Bluetooth {
     }
 
     // 블루투스로 온도를 받아와서 첫 화면에 온도 출력
-    public void tempData(final BluetoothSet blutoothSet){
+    public void tempData(final BluetoothSet bluetoothSet){
         final Handler mHandler = new Handler();
          Thread thread = new Thread(new Runnable() {
              @Override
@@ -93,11 +93,11 @@ public class Bluetooth {
                                      int temp = Integer.parseInt(message);
 
                                      if(temp>=0 && temp <= 50){
-                                         blutoothSet.setView(temp);
+                                         bluetoothSet.setView(temp);
                                          break;
                                      }else{
                                          // 온도가 비 정상적일 때
-                                         blutoothSet.setView(999999);
+                                         bluetoothSet.setView(999999);
                                      }
                                      System.out.println("test Meseage:" + message);
                                  }

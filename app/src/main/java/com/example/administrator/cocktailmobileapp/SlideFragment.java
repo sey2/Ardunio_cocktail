@@ -28,6 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class SlideFragment extends Fragment {
     private static final String TAG = "SlideView";
@@ -41,6 +42,7 @@ public class SlideFragment extends Fragment {
     private ImageView mCardImage;
     private RelativeLayout mBackground;
 
+    // 음료수 선택 화면 생성자
     public static SlideFragment createSlideFragment (String name, String title, String description, int imageID , int gradientStartColor, int gradientEndColor, String message) {
         SlideFragment slideFragment = new SlideFragment();
 
@@ -59,12 +61,13 @@ public class SlideFragment extends Fragment {
         return slideFragment;
     }
 
-    public static SlideFragment createSlideFragment(String description, int imageID, int gradientStartColor, int gradientEndColor,String message){
+    // 첫 화면, 현재 온도 알려주는 화면 생성자
+    public static SlideFragment createSlideFragment(String temp, String recommand , int imageID, int gradientStartColor, int gradientEndColor,String message){
         SlideFragment slideFragment = new SlideFragment();
 
         Bundle bundle = new Bundle();
-
-        bundle.putString("description", description);
+        bundle.putString("name", temp);
+        bundle.putString("title", recommand);
         bundle.putInt("imageID", imageID);
         bundle.putInt("gradientStartColor", gradientStartColor);
         bundle.putInt("gradientEndColor", gradientEndColor);
@@ -98,16 +101,22 @@ public class SlideFragment extends Fragment {
         mDesciption.setText(bundle.getString("description"));
         mCardImage.setImageResource(bundle.getInt("imageID"));
 
-        // 온도를 알려주는 첫 화면
+        // 앱을 키고 아두이노 업로딩 하면 현재 온도가 설정 됨
+        // Bluetooth 클래스에서 ui를 변경하기 위해 BluetoothSet 인터페이스를 만들어 handler 스레드에서 ui 접근
         if(bundle.getString("message").equals("6")){
-            mButton.setVisibility(View.INVISIBLE);
-            String message = null;
-            try {
-                message = Bluetooth.getInstance().readTmp();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            mDesciption.setText(bundle.getString("description" + message));
+            mButton.setVisibility(View.INVISIBLE);  // 버튼만 사라지게 하기
+           Bluetooth.getInstance().tempData(new Bluetooth.BluetoothSet() {
+               @Override
+               public void setView(int temp) {
+                   mName.setText("현재 온도:" + temp +"C");
+                   if(temp >= 20){  // 더울 떄
+                    mTitle.setText("날씨가 덥네요.\n시원한 얼음을 넣어 먹는걸 추천해요!");
+                   }else if(temp <= 20){    // 추울 때
+                    mTitle.setText("날씨가 춥네요.\n얼음을 넣어 드시면 감기 걸리실 수도 있겠어요 ~");
+                   }
+               }
+           });
+
         }
 
         GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});

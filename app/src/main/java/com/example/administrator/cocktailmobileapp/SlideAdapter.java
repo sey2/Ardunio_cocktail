@@ -18,7 +18,8 @@ public class SlideAdapter extends FragmentPagerAdapter {
 
         mFragmentList.add(
                 SlideFragment.createSlideFragment(
-                        "현재 온도",
+                        "음료수 제조기 전원을 켜주세요!",
+                        "음료수 제조기가 켜져 있어야 온도를 읽을 수 있어요.",
                         R.drawable.image_cocktail_blue,
                         R.color.colorBlue255,
                         R.color.colorOrange255,

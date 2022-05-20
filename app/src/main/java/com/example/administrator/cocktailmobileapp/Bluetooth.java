@@ -15,7 +15,7 @@ public class Bluetooth {
     private static final String TAG = "Bluetooth";
 
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");    //UUID
-    private static final String MAC_ADDRESS = "AB:03:67:78:2B:0B";  //아두이노 맥주소
+    private static final String MAC_ADDRESS = "98:DA:60:01:9E:19";  //아두이노 맥주소
 
     private static Bluetooth instance;
 

@@ -18,6 +18,16 @@ public class SlideAdapter extends FragmentPagerAdapter {
 
         mFragmentList.add(
                 SlideFragment.createSlideFragment(
+                        "현재 온도",
+                        R.drawable.image_cocktail_blue,
+                        R.color.colorBlue255,
+                        R.color.colorOrange255,
+                        "6"
+                )
+        );
+
+        mFragmentList.add(
+                SlideFragment.createSlideFragment(
                         "핑크레이디",
                         "올해 Parents' night의 여주인공!",
                         "달콤쌉쌀한 자몽의 향기가\n" +

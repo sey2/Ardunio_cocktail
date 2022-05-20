@@ -24,7 +24,7 @@ public class Bluetooth {
     private BluetoothSocket mBluetoothSocket;
     private OutputStream mOutputStream;
     private InputStream mInputStream;
-
+    public String message;
     public static Bluetooth getInstance() {
         if (instance == null) {
             instance = new Bluetooth();
@@ -59,6 +59,15 @@ public class Bluetooth {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String readTmp() throws IOException {
+        if(mInputStream.available() > 0){
+            byte[] buffer = new byte[mInputStream.available()];
+            mInputStream.read(buffer);
+            message = new String(buffer);
+        }
+        return message;
     }
 
     public void readData(final Handler handler, final BluetoothCall bluetoothCall) {

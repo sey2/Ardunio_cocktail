@@ -13,6 +13,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -25,6 +26,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 public class SlideFragment extends Fragment {
     private static final String TAG = "SlideView";
@@ -56,6 +59,22 @@ public class SlideFragment extends Fragment {
         return slideFragment;
     }
 
+    public static SlideFragment createSlideFragment(String description, int imageID, int gradientStartColor, int gradientEndColor,String message){
+        SlideFragment slideFragment = new SlideFragment();
+
+        Bundle bundle = new Bundle();
+
+        bundle.putString("description", description);
+        bundle.putInt("imageID", imageID);
+        bundle.putInt("gradientStartColor", gradientStartColor);
+        bundle.putInt("gradientEndColor", gradientEndColor);
+        bundle.putString("message", message);
+
+        slideFragment.setArguments(bundle);
+
+        return slideFragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +92,28 @@ public class SlideFragment extends Fragment {
 
         final Bundle bundle = getArguments();
 
+
         mName.setText(bundle.getString("name"));
         mTitle.setText(bundle.getString("title"));
         mDesciption.setText(bundle.getString("description"));
         mCardImage.setImageResource(bundle.getInt("imageID"));
 
+        // 온도를 알려주는 첫 화면
+        if(bundle.getString("message").equals("6")){
+            mButton.setVisibility(View.INVISIBLE);
+            String message = null;
+            try {
+                message = Bluetooth.getInstance().readTmp();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mDesciption.setText(bundle.getString("description" + message));
+        }
+
         GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});
         gradientDrawable.setCornerRadius(0f);
         mBackground.setBackgroundDrawable(gradientDrawable);
+
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override

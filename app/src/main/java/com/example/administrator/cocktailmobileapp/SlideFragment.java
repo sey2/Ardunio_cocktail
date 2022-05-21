@@ -41,6 +41,7 @@ public class SlideFragment extends Fragment {
     private Button mButton;
     private ImageView mCardImage;
     private RelativeLayout mBackground;
+    private String message = "옆으로 슬라이드 해서 음료를 선택 해주세요.";
 
     // 음료수 선택 화면 생성자
     public static SlideFragment createSlideFragment (String name, String title, String description, int imageID , int gradientStartColor, int gradientEndColor, String message) {
@@ -110,16 +111,20 @@ public class SlideFragment extends Fragment {
                public void setView(int temp) {
                    mName.setText("현재 온도:" + temp +"C");
                    if(temp >= 20){  // 더울 떄
-                    mTitle.setText("날씨가 덥네요.\n시원한 얼음을 넣어 먹는걸 추천해요!");
+                    mTitle.setText("날씨가 덥네요.\n시원한 얼음을 넣어 먹는걸 추천해요!\n\n" + message);
                    }else if(temp <= 20){    // 추울 때
-                    mTitle.setText("날씨가 춥네요.\n얼음을 넣어 드시면 감기 걸리실 수도 있겠어요 ~");
+                    mTitle.setText("날씨가 춥네요.\n얼음을 넣어 드시면 감기 걸리실 수도 있겠어요 ~\n\n" + message);
                    }
                }
            });
 
         }
 
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});
+
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT,
+                new int[] {getResources().getColor(bundle.getInt("gradientStartColor")),
+                           getResources().getColor(bundle.getInt("gradientEndColor"))});
+
         gradientDrawable.setCornerRadius(0f);
         mBackground.setBackgroundDrawable(gradientDrawable);
 

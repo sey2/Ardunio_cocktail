@@ -33,4 +33,6 @@
     <color name="colorBlack255">#393E46</color>
     <color name="colorBlack144">#80393E46</color>
     <color name="colorBlack72">#40393E46</color>
+
+    <color name="colorGray5959">#595959</color>
 </resources>

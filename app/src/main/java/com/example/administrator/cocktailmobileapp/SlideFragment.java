@@ -109,7 +109,7 @@ public class SlideFragment extends Fragment {
            Bluetooth.getInstance().tempData(new Bluetooth.BluetoothSet() {
                @Override
                public void setView(int temp) {
-                   mName.setText("현재 온도:" + temp +"C");
+                   mName.setText("현재 온도: " + temp +"도");
                    if(temp >= 20){  // 더울 떄
                     mTitle.setText("날씨가 덥네요.\n시원한 얼음을 넣어 먹는걸 추천해요!\n\n" + message);
                    }else if(temp <= 20){    // 추울 때

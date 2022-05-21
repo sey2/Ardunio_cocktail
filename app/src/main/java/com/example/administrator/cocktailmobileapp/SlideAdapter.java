@@ -20,7 +20,7 @@ public class SlideAdapter extends FragmentPagerAdapter {
                 SlideFragment.createSlideFragment(
                         "음료수 제조기 전원을 켜주세요!",
                         "음료수 제조기가 켜져 있어야 온도를 읽을 수 있어요.",
-                        R.drawable.image_cocktail_blue,
+                        R.drawable.image_first,
                         R.color.colorBlue255,
                         R.color.colorOrange255,
                         "6"

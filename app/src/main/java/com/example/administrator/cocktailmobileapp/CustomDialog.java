@@ -58,7 +58,7 @@ public class CustomDialog extends Dialog {
         Button yesButton = this.findViewById(R.id.yes);
         Button noButton = this.findViewById(R.id.no);
 
-        textView.setText("'" + name + "' 칵테일을 만들까요?");
+        textView.setText(name + " 에이드를 만들까요?");
 
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override

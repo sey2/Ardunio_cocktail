@@ -127,7 +127,7 @@ public class SlideFragment extends Fragment {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CustomDialog.getInstance(getContext()).show(bundle.getString("message"), bundle.getString("name"));
+                CustomDialog.getInstance(getContext()).show(bundle.getString("message"), findName(bundle.getString("message")));
             }
         });
     }
@@ -160,5 +160,14 @@ public class SlideFragment extends Fragment {
         }
 
         drawable.setCallback(null);
+    }
+
+    private String findName(String num){
+        switch(num){
+            case "0": return "자몽";
+            case "1": return "레몬";
+            case "2": return "한라봉";
+        }
+        return "";
     }
 }

@@ -1,5 +1,11 @@
+#include <DHT.h>
 #include <SoftwareSerial.h>
 #include <LiquidCrystal_I2C.h>
+
+#define DHTPIN 4
+#define DHTTYPE DHT11  
+
+DHT dht(DHTPIN, DHTTYPE); 
 
 /* 관련 핀 상수화하기 */
 #define TX 2
@@ -28,7 +34,11 @@ void setup() {
   blueToothSerial.begin(9600);
   
   Serial.println("-- 아두이노 세팅 완료 --");
-  blueToothSerial.print("20");
+  int tmp = dht.readTemperature();
+  blueToothSerial.print(String(tmp));
+  Serial.print("Temperature: ");  // 이하생략
+  Serial.print(tmp);
+  Serial.println(" C");
 }
 
 void loop() {

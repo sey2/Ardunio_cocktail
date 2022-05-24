@@ -106,7 +106,7 @@ void loop() {
        * 완성메제지 보내기  
        * 최대한 짧게 보내는 게 좋습니다
        */
-      blueToothSerial.print("0");
+      blueToothSerial.print("9");
     } else {
       Serial.print(message);
     }

@@ -140,7 +140,7 @@ public class Bluetooth {
 
                             Log.d(TAG, "size - " + mInputStream.available() + " text - " + text);
 
-                            if (text.equals("0")) {
+                            if (text.equals("9")) {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {

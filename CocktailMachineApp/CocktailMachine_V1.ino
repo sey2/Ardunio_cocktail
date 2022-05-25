@@ -1,15 +1,18 @@
 #include <DHT.h>
+#include<Wire.h>
 #include <SoftwareSerial.h>
 #include <LiquidCrystal_I2C.h>
 
 #define DHTPIN 4
 #define DHTTYPE DHT11  
 
+// 드라이버 모듈 1
 #define WATHER_1AA 13
 #define WATHER_1AB 12
 #define WATHER_1BB 11
 #define WATHER_1BA 10
 
+// 드라이버 모듈 2
 #define WATHER_2AA 9
 #define WATHER_2AB 8
 
@@ -32,12 +35,25 @@ int recipes[3][4] = { {20, 20, 0, 0},
  * volume 값과 칵테일의 양은 정비례합니다
  */
  
- int volume = 100;
-
+int volume = 100;
+ 
 void setup() {
   /* 시리얼 창 설정 */
   Serial.begin(9600);
   blueToothSerial.begin(9600);
+
+  /*
+  Wire.begin();   // Start Master I2C
+  Wire.requestFrom(8, 1); // request water Data from Slave ID 8 
+  delay(500);   // Wait data
+
+  if(Wire.available()){
+    byte b = Wire.read();
+    blueToothSerial.print(b);
+  }else{
+    Serial.println("물 수위 센서 값 받아오기 실패");
+  }
+  */
   
   Serial.println("-- 아두이노 세팅 완료 --");
   int tmp = dht.readTemperature();

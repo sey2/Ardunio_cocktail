@@ -99,7 +99,7 @@ public class Bluetooth {
                                          // 온도가 비 정상적일 때
                                          bluetoothSet.setView(999999);
                                      }
-                                     System.out.println("test Meseage:" + message);
+                                     System.out.println("test Message:" + message);
                                  }
 
                              }

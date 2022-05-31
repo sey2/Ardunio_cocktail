@@ -43,19 +43,23 @@ void setup() {
   blueToothSerial.begin(9600);
   dht.begin();
 
-/*
   Wire.begin();   // Start Master I2C
   delay(500);   // Wait data
-  Wire.requestFrom(8, 1); // request water Data from Slave ID 8 
-  delay(500);   // Wait data
+  Wire.requestFrom(8, 20); // request water Data from Slave ID 8 
+  delay(1000);   // Wait data
+
   if(Wire.available()){
-    byte b = Wire.read();
-    blueToothSerial.print(b);
-  }else{
+    while(Wire.available()){
+    byte c = Wire.read();
+    Serial.print((char)c);
+    blueToothSerial.print(c);
+  }
+ }
+ else{
     Serial.println("물 수위 센서 값 받아오기 실패");
   }
-*/
-  
+ 
+ 
   Serial.println("-- 아두이노 세팅 완료 --");
   delay(100); // 온습도를 읽어 오려면 약간의 대기 시간이 필요합니다. 
 

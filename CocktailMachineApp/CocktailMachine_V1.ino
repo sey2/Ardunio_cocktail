@@ -25,18 +25,6 @@ DHT dht(DHTPIN, DHTTYPE);
 SoftwareSerial blueToothSerial(TX, RX);   // 블루투스 객체 선언
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // LCD 객체 선언 SDA A4 SCL A5
 
-
-int recipes[3][4] = { {20, 20, 0, 0},   
-                      {20, 0, 20, 0},
-                      {20, 0, 0 ,20}};
-
-/* 
- * 여기에서 칵테일의 양을 조절할 수 있습니다
- * volume 값과 칵테일의 양은 정비례합니다
- */
- 
-int volume = 100;
- 
 void setup() {
   /* 시리얼 창 설정 */
   Serial.begin(9600);
@@ -45,14 +33,18 @@ void setup() {
 
   Wire.begin();   // Start Master I2C
   delay(500);   // Wait data
-  Wire.requestFrom(8, 20); // request water Data from Slave ID 8 
+  Wire.requestFrom(8, 15); // request water Data from Slave ID 8 
   delay(1000);   // Wait data
+
 
   if(Wire.available()){
     while(Wire.available()){
     byte c = Wire.read();
-    Serial.print((char)c);
-    blueToothSerial.print(c);
+
+    if(char(c) != 'X'){
+      Serial.print(char(c));
+      blueToothSerial.print(char(c));
+    }
   }
  }
  else{
@@ -60,7 +52,7 @@ void setup() {
   }
  
  
-  Serial.println("-- 아두이노 세팅 완료 --");
+  Serial.println("\n-- 아두이노 세팅 완료 --");
   delay(100); // 온습도를 읽어 오려면 약간의 대기 시간이 필요합니다. 
 
   int tmp = dht.readTemperature();
@@ -74,6 +66,7 @@ void setup() {
   
   pinMode(WATHER_1AA, OUTPUT);
   pinMode(WATHER_1AB, OUTPUT);
+  
   pinMode(WATHER_1BB, OUTPUT);
   pinMode(WATHER_1BA, OUTPUT);
   pinMode(WATHER_2AA, OUTPUT);
@@ -111,11 +104,11 @@ void loop() {
       /* 칵테일 만들기 */
       // 탄산수 
       digitalWrite(13, HIGH);
-      digitalWrite(12, LOW);
+      digitalWrite(12, HIGH);
       
       // 사용자 선택 음료 
       digitalWrite(cocktailNum * 2 + 6, HIGH);
-      digitalWrite(cocktailNum * 2 + 7, LOW);
+      digitalWrite(cocktailNum * 2 + 7, HIGH);
       delay(7000);
 
       // 탄산수 

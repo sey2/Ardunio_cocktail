@@ -68,7 +68,8 @@
                 android:layout_marginBottom="36dp"
                 android:lineSpacingMultiplier="1.8"
                 android:textColor="@color/colorWhite255"
-                android:textSize="@dimen/description_size" />
+                android:textSize="30sp"
+                app:fontFamily="@font/kidari" />
 
             <Button
                 android:id="@+id/button"
@@ -79,10 +80,10 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/background_button_select"
-                app:fontFamily="@font/spoqa_regular"
                 android:text="@string/button_text"
                 android:textColor="@drawable/text_button_select"
-                android:textSize="@dimen/button_text_size" />
+                android:textSize="@dimen/button_text_size"
+                app:fontFamily="@font/spoqa_regular" />
 
         </LinearLayout>
     </RelativeLayout>

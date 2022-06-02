@@ -46,6 +46,10 @@ public class Bluetooth {
         void setView(int temp);
     }
 
+    public interface SetDepth{
+        void setDepth(String str);
+    }
+
     public Bluetooth() {
         try {
             mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -112,6 +116,51 @@ public class Bluetooth {
          });
          thread.start();
     }
+
+    // 블루투스로 온도를 받아와서 첫 화면에 온도 출력
+    public void readDepth(final SetDepth readDepth){
+        final Handler mHandler = new Handler();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            while (true) {
+                                if (mInputStream.available() > 0) {
+                                    byte[] buffer = new byte[mInputStream.available()];
+
+                                    try {
+                                        mInputStream.read(buffer);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    message = new String(buffer);
+                                    System.out.println("확인: " + message);
+
+                                    String depthArr [] = message.split("/");
+                                    String depth = "";
+
+                                    for(int i=0; i<depthArr.length; i++)
+                                        depth+= (i+1) +"번째 음료수 남은 양: " + depthArr[i] + "% \n";
+
+                                    readDepth.setDepth(depth);
+                                    System.out.println("test Message:" + message);
+                                    break;
+                                }
+
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+        thread.start();
+    }
+
 
     public void readData(final Handler handler, final BluetoothCall bluetoothCall) {
         Thread thread = new Thread(new Runnable() {

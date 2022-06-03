@@ -82,7 +82,7 @@ void setup() {
   lcd.init();
   lcd.backlight();
   lcd.setCursor(0, 0);
-  lcd.print("Cocktail");
+  lcd.print("7 Team");
 
   Serial.print("Temperature: ");  // 이하생략
   Serial.print(tmp);
@@ -97,7 +97,7 @@ void loop() {
 
     if (message >= '0' && message <= '6') {
       Serial.print(message);
-      Serial.println(" 칵테일을 만듭니다");
+      Serial.println(" 음료수를 만듭니다.");
 
       /* 칵테일 만들기 전 LCD on */
 
@@ -105,7 +105,6 @@ void loop() {
 
       int cocktailNum = (int)(message - 48);
 
-      /* 칵테일 만들기 */
       // 탄산수
       digitalWrite(13, HIGH);
       digitalWrite(12, HIGH);
@@ -123,15 +122,12 @@ void loop() {
       digitalWrite(cocktailNum * 2 + 6, LOW);
       digitalWrite(cocktailNum * 2 + 7, LOW);
 
-      /* 칵테일 만든 후에 LCD off */
+      /* 음료를 만든 후에 LCD off */
       delay(500);
 
       setLCDText("COMPLETE!");
 
-      /*
-         완성메제지 보내기
-         최대한 짧게 보내는 게 좋습니다
-      */
+      /* 완성메제지 보내기  */
       blueToothSerial.print("9");
  
 

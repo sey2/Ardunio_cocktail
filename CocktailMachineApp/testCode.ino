@@ -35,7 +35,7 @@ void setup() {
 
   Wire.begin();   // Start Master I2C
   delay(500);   // Wait data
-  Wire.requestFrom(8, 20); // request water Data from Slave ID 8
+  Wire.requestFrom(8, 15); // request water Data from Slave ID 8
   delay(1000);   // Wait data
 
 
@@ -103,6 +103,8 @@ void loop() {
 
       setLCDText("MAKING...");
 
+      delay(3000);
+
       int cocktailNum = (int)(message - 48);
 
       /* 칵테일 만들기 */
@@ -113,7 +115,7 @@ void loop() {
       // 사용자 선택 음료
       digitalWrite(cocktailNum * 2 + 6, HIGH);
       digitalWrite(cocktailNum * 2 + 7, HIGH);
-      delay(4000);
+      delay(7000);
 
       // 탄산수
       digitalWrite(WATHER_1AA, LOW);
@@ -124,7 +126,7 @@ void loop() {
       digitalWrite(cocktailNum * 2 + 7, LOW);
 
       /* 칵테일 만든 후에 LCD off */
-      delay(500);
+      delay(1000);
 
       setLCDText("COMPLETE!");
 
@@ -133,7 +135,24 @@ void loop() {
          최대한 짧게 보내는 게 좋습니다
       */
       blueToothSerial.print("9");
- 
+
+      Wire.requestFrom(8, 15); // request water Data from Slave ID 8
+      delay(1000);   // Wait data
+
+
+      if (Wire.available()) {
+        while (Wire.available()) {
+          byte c = Wire.read();
+
+          if (char(c) != 'X') {
+            Serial.print(char(c));
+            blueToothSerial.print(char(c));
+          }
+        }
+      }
+      else {
+        Serial.println("물 수위 센서 값 받아오기 실패");
+      }
 
     } else {
       Serial.print(message);

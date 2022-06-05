@@ -77,22 +77,22 @@ public class CustomDialog extends Dialog {
                     public void onMaking() {
                         if (mMakingNum % 5 == 1) {
                             stateImageView.setImageResource(R.drawable.image_making_1);
-                            stateTextView.setText("칵테일을 만드는 중입니다 .");
+                            stateTextView.setText("음료수를 만드는 중입니다 .");
                             Log.d(TAG, "1");
                         } else if (mMakingNum % 5 == 2) {
                             stateImageView.setImageResource(R.drawable.image_making_2);
-                            stateTextView.setText("칵테일을 만드는 중입니다 . .");
+                            stateTextView.setText("음료수를 만드는 중입니다 . .");
                             Log.d(TAG, "2");
                         } else if (mMakingNum % 5 == 3) {
                             stateImageView.setImageResource(R.drawable.image_making_3);
-                            stateTextView.setText("칵테일을 만드는 중입니다 . . .");
+                            stateTextView.setText("음료수를 만드는 중입니다 . . .");
                             Log.d(TAG, "3");
                         } else if (mMakingNum % 5 == 4) {
                             stateImageView.setImageResource(R.drawable.image_making_4);
-                            stateTextView.setText("칵테일을 만드는 중입니다 . . . .");
+                            stateTextView.setText("음료수를 만드는 중입니다 . . . .");
                         } else if (mMakingNum % 5 == 0) {
                             stateImageView.setImageResource(R.drawable.image_making_5);
-                            stateTextView.setText("칵테일을 만드는 중입니다 . . . . .");
+                            stateTextView.setText("음료수를 만드는 중입니다 . . . . .");
                         }
 
                         mMakingNum++;
@@ -101,7 +101,7 @@ public class CustomDialog extends Dialog {
                     @Override
                     public void onComplete() {
                         stateImageView.setImageResource(R.drawable.image_complete);
-                        stateTextView.setText("칵테일을 완성했습니다!");
+                        stateTextView.setText("음료수를 완성했습니다!");
 
                         self.findViewById(R.id.background_dialog).setOnClickListener(new View.OnClickListener() {
                             @Override

@@ -3,7 +3,9 @@
 #include <SoftwareSerial.h>
 #include <LiquidCrystal_I2C.h>
 
-/* 관련 핀 상수화하기 */
+/* 8 ~ 9 , 6 ~ 7번핀 */
+
+/* 관련 핀 상수화하기 */  
 #define TX 2
 #define RX 3
 
@@ -118,7 +120,7 @@ void loop() {
       // 사용자 선택 음료
       digitalWrite(drinkNum * 2 + 6, HIGH);
       digitalWrite(drinkNum * 2 + 7, HIGH);
-      delay(7000);
+      delay(3000);
 
       // 탄산수
       digitalWrite(WATHER_1AA, LOW);

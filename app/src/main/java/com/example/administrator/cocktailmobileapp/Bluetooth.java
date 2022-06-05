@@ -139,6 +139,11 @@ public class Bluetooth {
                                     message = new String(buffer);
                                     System.out.println("확인: " + message);
 
+                                    if(message.equals("z")){
+                                        readDepth.setDepth("컵을 올린 후 음료를 선택해 주세요!");
+                                        break;
+                                    }
+
                                     String depthArr [] = message.split("/");
                                     String depth = "";
 

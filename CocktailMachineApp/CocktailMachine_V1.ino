@@ -109,15 +109,15 @@ void loop() {
 
       setLCDText("MAKING...");
 
-      int cocktailNum = (int)(message - 48);
+      int drinkNum = (int)(message - 48);
 
       // 탄산수
       digitalWrite(13, HIGH);
       digitalWrite(12, HIGH);
 
       // 사용자 선택 음료
-      digitalWrite(cocktailNum * 2 + 6, HIGH);
-      digitalWrite(cocktailNum * 2 + 7, HIGH);
+      digitalWrite(drinkNum * 2 + 6, HIGH);
+      digitalWrite(drinkNum * 2 + 7, HIGH);
       delay(7000);
 
       // 탄산수
@@ -125,8 +125,8 @@ void loop() {
       digitalWrite(WATHER_1AB, LOW);
 
       // 사용자 선택 음료
-      digitalWrite(cocktailNum * 2 + 6, LOW);
-      digitalWrite(cocktailNum * 2 + 7, LOW);
+      digitalWrite(drinkNum * 2 + 6, LOW);
+      digitalWrite(drinkNum * 2 + 7, LOW);
 
       /* 음료를 만든 후에 LCD off */
       delay(500);

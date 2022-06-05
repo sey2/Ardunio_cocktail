@@ -43,6 +43,12 @@ void setup() {
     while (Wire.available()) {
       byte c = Wire.read();
 
+      if(char(c) == 'z'){
+        Serial.print(char(c));
+        blueToothSerial.print(char(c));
+        break;
+      }
+
       if (char(c) != 'X') {
         Serial.print(char(c));
         blueToothSerial.print(char(c));
@@ -112,7 +118,7 @@ void loop() {
       // 사용자 선택 음료
       digitalWrite(cocktailNum * 2 + 6, HIGH);
       digitalWrite(cocktailNum * 2 + 7, HIGH);
-      delay(4000);
+      delay(7000);
 
       // 탄산수
       digitalWrite(WATHER_1AA, LOW);

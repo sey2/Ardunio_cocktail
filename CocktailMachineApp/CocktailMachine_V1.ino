@@ -35,10 +35,10 @@ void setup() {
   blueToothSerial.begin(9600);
   dht.begin();
 
-  Wire.begin();   // Start Master I2C
-  delay(500);   // Wait data
-  Wire.requestFrom(8, 20); // request water Data from Slave ID 8
-  delay(1000);   // Wait data
+  Wire.begin();  
+  delay(500); 
+  Wire.requestFrom(8, 20); 
+  delay(1000);  
 
 
   if (Wire.available()) {
